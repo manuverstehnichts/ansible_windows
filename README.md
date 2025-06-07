@@ -2,7 +2,7 @@
 
 Dieses Playbook automatisiert die Installation und Konfiguration deines Windows-PCs mit Ansible – schnell, effizient und wiederholbar.
 
-## WICHTIG
+<h3>WICHTIG</h3>
 Bevor du dieses Repository nutzt, passe unbedingt die Inventory-Datei an deine Umgebung an. Ausserdem lösche die vorhandene vault.yml und erstelle eine neue, um deine eigenen geheimen Variablen sicher zu verwalten.
 
 ## Inhalt
