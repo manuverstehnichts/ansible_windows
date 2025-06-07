@@ -1,0 +1,161 @@
+# -------------------------------------------------------------
+# Windows Automation - Default Configuration
+# -------------------------------------------------------------
+
+# --- System Einstellungen ---
+configure_hostname: false              # Aktiviere, um den Hostnamen zu setzen
+custom_hostname: windows-ansible       # Gewünschter Hostname (falls aktiviert)
+
+# --- Explorer & Desktop ---
+configure_explorer: true               # Optimiere Windows Explorer Einstellungen
+remove_desktop_icons: false            # Entfernt Desktop-Symbole
+
+# --- Benutzeroberfläche ---
+configure_start_menu: true             # Passe das Startmenü an
+configure_taskbar: true                # Konfiguriere die Taskleiste
+configure_background: true             # Setze einen Hintergrund
+
+# --- Eingabe & Anzeige ---
+disable_mouse_acceleration: true       # Deaktiviere Mausbeschleunigung
+set_sound_scheme: true                 # Setze benutzerdefiniertes Soundschema
+
+# --- Remote ---
+remote_desktop_enabled: true           # Aktiviere Remotedesktop (RDP)
+
+# --- Energieoptionen ---
+change_power_plan: true                # Ändere Energieschema
+power_plan: "high_performance"         # Optionen: high_performance, balanced, power_saver
+
+# --- Windows Updates ---
+install_windows_updates: false         # Installiere Windows Updates
+windows_updates_reboot: true           # Automatischer Neustart nach Updates
+update_categories:                     # Kategorien der Updates (nur bei Bedarf anpassen)
+  - Critical Updates
+  - Security Updates
+  - Update Rollups
+  # - "*"
+  # - Definition Updates
+  # - Updates
+  # - Upgrades
+  # - Service Packs
+  # - Feature Packs
+  # - Developer Kits
+  # - Tools
+
+# --- Chocolatey ---
+install_chocolatey_packages: true      # Installiere Chocolatey-Pakete
+choco_installed_packages:
+  - name: adobereader
+    version: "2025.1.20467"
+  - name: googlechrome
+    state: latest
+    choco_args: --ignorechecksum
+  - name: nvidia-geforce-now
+    state: latest
+    choco_args: --ignorechecksum
+  - name: ubisoft-connect
+    state: latest
+    choco_args: --ignorechecksum
+  - git
+  - jre8
+  - peazip
+  - powertoys
+  - python3
+  - sharex
+  - telegram
+  - vlc
+  - vscode
+  - steam
+  - discord
+  - bitwarden
+  - logitechgaming
+  - epicgameslauncher
+  - overwolf
+  - winscp
+  - onedrive
+
+# --- Winget ---
+install_winget_packages: true
+winget_packages:
+  - name: WinDynamicDesktop
+    source: winget
+  # Beispiel:
+  # - name: "Auto Dark Mode"
+  #   source: winget
+
+# --- Schriftarten ---
+install_fonts: true
+installed_nerdfonts:
+  - FiraCode
+  - FantasqueSansMono
+
+# --- Terminal ---
+install_ohmyposh: true                 # Installiere und konfiguriere Oh My Posh
+
+# --- Windows Features ---
+install_windows_features: false
+windows_features:
+  Microsoft-Hyper-V: true              # Beispiel-Feature
+
+# --- WSL2 ---
+install_wsl2: false
+wsl_distribution: "Ubuntu-22.04"       # WSL Distro: z. B. wsl-ubuntu-2004
+
+# --- Bloatware Entfernen ---
+remove_bloatware: true
+bloatware:
+  - Microsoft.BingNews
+  - Microsoft.BingWeather
+  - Microsoft.GamingApp
+  - Microsoft.GetHelp
+  - Microsoft.Getstarted
+  - Microsoft.Microsoft3DViewer
+  - Microsoft.MicrosoftOfficeHub
+  - Microsoft.MicrosoftSolitaireCollection
+  - Microsoft.MicrosoftStickyNotes
+  - Microsoft.MixedReality.Portal
+  - Microsoft.Office.OneNote
+  - Microsoft.OneConnect
+  - Microsoft.People
+  - Microsoft.PowerAutomateDesktop
+  - Microsoft.Print3D
+  - Microsoft.ScreenSketch
+  - Microsoft.SkypeApp
+  - Microsoft.Todos
+  - Microsoft.Windows.Photos
+  - Microsoft.WindowsAlarms
+  - Microsoft.Wallet
+  - Microsoft.WindowsCamera
+  - Microsoft.WindowsFeedbackHub
+  - Microsoft.WindowsMaps
+  - Microsoft.WindowsSoundRecorder
+  - Microsoft.Xbox
+  - Microsoft.Xbox.TCUI
+  - Microsoft.XboxApp
+  - Microsoft.XboxGameOverlay
+  - Microsoft.XboxSpeechToTextOverlay
+  - Microsoft.ZuneMusic
+  - Microsoft.ZuneVideo
+  - MicrosoftTeams
+  # Optional deaktivierbare Apps:
+  # - Microsoft.YourPhone
+  # - microsoft.windowscommunicationsapps
+  # - Microsoft.WindowsCalculator
+  # - Microsoft.MSPaint
+  # - Microsoft.Messaging
+
+# --- Storage Sense ---
+configure_storage_sense: true
+storage_sense:
+  enabled: true
+  run_frequency: 1                     # In Tagen
+  delete_unused_files: true
+  delete_recycle_bin_files: true
+  recycle_bin_age: 14                  # In Tagen
+  delete_downloads_files: true
+  downloads_age: 14                    # In Tagen
+
+# --- Defragmentierung ---
+defrag_volumes: true
+include_volumes:
+  - C                                 # Laufwerke, die defragmentiert werden sollen

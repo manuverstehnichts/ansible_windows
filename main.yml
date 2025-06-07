@@ -1,0 +1,29 @@
+---
+- name: Windows Automation
+  hosts: all
+
+  vars_files:
+    - default.config.yml
+    - vault.yml
+
+  roles:
+    - { role: hostname,         when: configure_hostname,         tags: hostname }
+    - { role: background,       when: configure_background,       tags: background }
+    - { role: updates,          when: install_windows_updates,    tags: updates }
+    - { role: debloat,          when: remove_bloatware,           tags: debloat }
+    - { role: chocolatey,       when: install_chocolatey_packages, tags: chocolatey }
+    - { role: winget,           when: install_winget_packages,    tags: winget }
+    - { role: windows_features, when: install_windows_features,   tags: windows_features }
+    - { role: wsl2,             when: install_wsl2,               tags: wsl }
+    - { role: fonts,            when: install_fonts,              tags: fonts }
+    - { role: ohmyposh,         when: install_ohmyposh,           tags: ohmyposh }
+    - { role: explorer,         when: configure_explorer,         tags: explorer }
+    - { role: taskbar,          when: configure_taskbar,          tags: taskbar }
+    - { role: start_menu,       when: configure_start_menu,       tags: start_menu }
+    - { role: sounds,           when: set_sound_scheme,           tags: sounds }
+    - { role: mouse,            when: disable_mouse_acceleration, tags: mouse }
+    - { role: power_plan,       when: change_power_plan,          tags: power }
+    - { role: remote_desktop,   when: remote_desktop_enabled,     tags: remote_desktop }
+    - { role: desktop,          when: remove_desktop_icons,       tags: desktop }
+    - { role: storage_sense,    when: configure_storage_sense,    tags: storage_sense }
+    - { role: defrag,           when: defrag_volumes,             tags: defrag }

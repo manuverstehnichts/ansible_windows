@@ -1,0 +1,17 @@
+---
+- name: Installiere WSL2 Distribution per PowerShell
+  ansible.windows.win_shell: |
+    wsl --install -d {{ wsl_distribution }}
+  args:
+    executable: powershell
+  become: true
+  register: wsl_install_result
+  ignore_errors: true
+
+- name: Zeige Installationsausgabe
+  debug:
+    var: wsl_install_result.stdout_lines
+
+- name: Reboot if required
+  ansible.windows.win_reboot:
+    reboot_timeout: 600

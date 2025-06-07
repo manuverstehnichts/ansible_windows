@@ -1,0 +1,31 @@
+---
+- name: Erstelle Zielverzeichnis für Hintergrundbild
+  win_file:
+    path: C:\Temp
+    state: directory
+
+- name: Kopiere Hintergrundbild auf Zielsystem
+  win_copy:
+    src: background.jpg
+    dest: C:\Temp\background.jpg
+
+- name: Setze Wallpaper-Stil via PowerShell
+  win_shell: |
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name WallpaperStyle -Value 10
+    Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name TileWallpaper -Value 0
+
+- name: Setze Hintergrundbild via PowerShell COM-Objekt
+  win_shell: |
+    Add-Type -TypeDefinition @"
+    using System.Runtime.InteropServices;
+    public class Wallpaper {
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern bool SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+    }
+    "@
+    $path = "C:\\Temp\\background.jpg"
+    [Wallpaper]::SystemParametersInfo(20, 0, $path, 3)
+
+- name: Aktualisiere Hintergrundbild-Effekt (ohne Neustart)
+  win_shell: |
+    RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
