@@ -48,7 +48,7 @@ Bevor du dieses Repository nutzt, passe unbedingt die Inventory-Datei an deine U
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$url = "https://raw.githubusercontent.com/manuverstehnichts/ansible_windows/refs/heads/main/setup.ps1"
+$url = "https://raw.githubusercontent.com/manuverstehtnichts/ansible_windows/refs/heads/main/setup.ps1"
 $file = "$env:temp\setup.ps1"
 
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
