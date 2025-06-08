@@ -1,4 +1,4 @@
-image: cytopia/ansible:2.12
+image: ghcr.io/ansible/ansible-runner:latest
 
 stages:
   - deploy
