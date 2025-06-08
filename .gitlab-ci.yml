@@ -1,24 +1,10 @@
-stages:
-  - deploy
+image: willhallonline/ansible:2.12-ubuntu-jammy
 
-deploy_ansible:
-  stage: deploy
-  only:
-    - main
-  tags:
-    - ansible_windows
-  before_script:
-    - sudo apt-get update && apt-get install -y python3 python3-pip python3-venv
-    - python3 -m venv venv
-    - source venv/bin/activate
-    - pip install ansible
-    - eval $(ssh-agent -s)
-    - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
-    
-  script:
-    - pwd
-    - ls -la
-    - ansible-playbook main.yml -i inventory
+before_script:
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
+  - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
+
+script:
+  - ansible-playbook main.yml -i inventory
