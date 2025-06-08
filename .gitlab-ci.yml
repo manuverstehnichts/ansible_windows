@@ -6,7 +6,7 @@ deploy_ansible:
   only:
     - main
   tags:
-    - ansible_windows   # <- MUSS zum Runner-Tag passen
+    - ansible_windows
   before_script:
     - sudo apt-get update && sudo apt-get install -y ansible openssh-client sshpass
     - eval $(ssh-agent -s)
@@ -15,4 +15,5 @@ deploy_ansible:
     - chmod 700 ~/.ssh
     - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
   script:
+    - source venv-ansible/bin/activate
     - ansible-playbook main.yml -i inventory
