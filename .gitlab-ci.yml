@@ -1,10 +1,19 @@
 image: willhallonline/ansible:2.12-ubuntu-jammy
 
-before_script:
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
-  - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
+stages:
+  - deploy
 
-script:
-  - ansible-playbook main.yml -i inventory
+deploy_ansible:
+  stage: deploy
+  tags:
+    - ansible     # ← Tag deines Docker-Runners
+  only:
+    - main
+  before_script:
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
+    - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
+  script:
+    - ansible-playbook main.yml -i inventory
