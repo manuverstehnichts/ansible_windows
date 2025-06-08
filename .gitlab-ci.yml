@@ -16,4 +16,4 @@ deploy_ansible:
     - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
   script:
     - echo "$ANSIBLE_VAULT_PASSWORD" > .vault_pass
-    - ansible-playbook main.yml -i inventory
+    - ansible-playbook main.yml -i inventory --vault-password-file .vault_pass
