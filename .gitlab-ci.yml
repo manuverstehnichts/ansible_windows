@@ -8,9 +8,9 @@ deploy_ansible:
   tags:
     - ansible_windows
   before_script:
+    - apt-get update && apt-get install -y python3 python3-pip python3-venv
     - python3 -m venv venv
     - source venv/bin/activate
-    - pip install --upgrade pip
     - pip install ansible
     - eval $(ssh-agent -s)
     - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
