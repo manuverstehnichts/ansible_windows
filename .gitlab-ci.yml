@@ -10,7 +10,7 @@ deploy_ansible:
   only:
     - main
   before_script:
-    - apt-get update && apt-get install -y openssh-client ssh-agent
+    - apt update && apt install -y openssh-client ssh-agent
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - eval $(ssh-agent -s)
