@@ -4,7 +4,9 @@ stages:
 deploy_ansible:
   stage: deploy
   only:
-    - main   # wird nur bei Pushes oder Merges in den main-Branch ausgeführt
+    - main
+  tags:
+    - ansible_windows   # <- MUSS zum Runner-Tag passen
   before_script:
     - apt-get update && apt-get install -y ansible openssh-client sshpass
     - eval $(ssh-agent -s)
