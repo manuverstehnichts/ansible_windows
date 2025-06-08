@@ -1,4 +1,4 @@
-image: willhallonline/ansible:2.12-ubuntu-jammy
+image: cytopia/ansible:2.12
 
 stages:
   - deploy
