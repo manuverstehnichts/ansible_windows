@@ -1,4 +1,4 @@
-image: cytopia/ansible:2.12
+image: ghcr.io/ansible-community/community-ee-minimal:latest
 
 stages:
   - deploy
@@ -6,16 +6,15 @@ stages:
 deploy_ansible:
   stage: deploy
   tags:
-    - ansible_windows     # ← Tag deines Docker-Runners
+    - ansible_windows
   only:
     - main
-  before_script:
-    - apt update && apt install -y openssh-client ssh-agent
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - eval $(ssh-agent -s)
-    - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
-    - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
-    
-  script:
-    - ansible-playbook main.yml -i inventory
+
+before_script:
+  - mkdir -p ~/.ssh && chmod 700 ~/.ssh
+  - eval $(ssh-agent -s)
+  - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
+  - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
+
+script:
+  - ansible-playbook main.yml -i inventory
