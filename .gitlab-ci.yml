@@ -6,7 +6,7 @@ stages:
 deploy_ansible:
   stage: deploy
   tags:
-    - ansible     # ← Tag deines Docker-Runners
+    - ansible_windows     # ← Tag deines Docker-Runners
   only:
     - main
   before_script:
