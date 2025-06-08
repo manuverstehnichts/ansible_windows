@@ -8,12 +8,17 @@ deploy_ansible:
   tags:
     - ansible_windows
   before_script:
-    - sudo apt-get update && sudo apt-get install -y ansible openssh-client sshpass
+    - python3 -m venv venv
+    - source venv/bin/activate
+    - pip install --upgrade pip
+    - pip install ansible
     - eval $(ssh-agent -s)
     - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
+    
   script:
-    - source venv-ansible/bin/activate
+    - pwd
+    - ls -la
     - ansible-playbook main.yml -i inventory
