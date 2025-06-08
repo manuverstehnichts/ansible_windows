@@ -1,0 +1,16 @@
+stages:
+  - deploy
+
+deploy_ansible:
+  stage: deploy
+  only:
+    - main   # wird nur bei Pushes oder Merges in den main-Branch ausgeführt
+  before_script:
+    - apt-get update && apt-get install -y ansible openssh-client sshpass
+    - eval $(ssh-agent -s)
+    - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -H <DEIN-SERVER> >> ~/.ssh/known_hosts
+  script:
+    - ansible-playbook main.yml -i inventory
