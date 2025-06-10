@@ -73,6 +73,7 @@ choco_installed_packages:
   - overwolf
   - winscp
   - onedrive
+  - wakeonlan
 
 # --- Winget ---
 install_winget_packages: true
