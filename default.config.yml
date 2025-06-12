@@ -74,6 +74,7 @@ choco_installed_packages:
   - winscp
   - onedrive
   - wakeonlan
+  - qbittorrent
 
 # --- Winget ---
 install_winget_packages: true
