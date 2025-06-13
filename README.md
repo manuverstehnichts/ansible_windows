@@ -155,3 +155,7 @@ ohmyposh_theme: agnoster
 ### Credits & Autor
 
 This project was created by [Manuel Schär](https://github.com/manuverstehnichts) and is inspired by [Alex Nabokikh](https://github.com/AlexNabokikh/windows-playbook). Certain components have been adapted and incorporated.
+
+### more information
+
+https://deepwiki.com/manuverstehtnichts/ansible_windows
