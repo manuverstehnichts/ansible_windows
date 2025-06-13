@@ -82,15 +82,17 @@ ansible-playbook main.yml
 
 ---
 
-## Nur bestimmte Aufgaben ausführen (Tags)
+## Playbook mit Tags
 
-Beispiel: Nur Chocolatey & WSL installieren:
+| Execution Mode | Command Example  | Use Case |
+|-------------------------|---------|---------|
+| Full Automation | `ansible-playbook main.yml` | Gesamte Einrichtung |
+| Selective Roles | `ansible-playbook main.yml --tags "chocolatey,wsl"` | Specific components |
+| Category-based | `ansible-playbook main.yml --tags "explorer,taskbar"` | UI customization only |
+| Maintenance	 | `ansible-playbook main.yml --tags "updates,defrag"` | System maintenance |
 
-```bash
-ansible-playbook main.yml --tags "chocolatey,defrag"
-```
 
-Verfügbare Tags:  
+# Verfügbare Tags:  
 
 | Tag                | Beschreibung                                         |
 | ------------------ | ---------------------------------------------------- |
