@@ -14,6 +14,7 @@ Bevor du dieses Repository nutzt, passe unbedingt die Inventory-Datei an deine U
 - [Nur bestimmte Aufgaben ausführen (Tags)](#nur-bestimmte-aufgaben-ausführen-tags)
 - [Konfiguration per Variablen](#konfiguration-per-variablen)
 
+![Logik](logik.png)
 ---
 
 ## Playbook-Funktionen
