@@ -1,7 +1,7 @@
 ---
 - name: Windows Automation
   hosts: all
-  become: true
+
   vars_files:
     - default.config.yml
     - vault.yml
