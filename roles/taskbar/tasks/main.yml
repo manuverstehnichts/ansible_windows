@@ -15,7 +15,7 @@
   loop:
     - ShowCortanaButton
     - ShowTaskViewButton
-    - TaskbarDa
+ #   - TaskbarDa
     - TaskbarMn
 
 - name: Unpin 'News and Interests' from Taskbar.
