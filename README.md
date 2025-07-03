@@ -55,6 +55,8 @@ $file = "$env:temp\setup.ps1"
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 ```
+Falls das Script bei dir nicht korrekt funktioniert kannst du die Firewall für SSH über folgenden Befehl öffnen:
+New-NetFirewallRule -Name sshd -DisplayName 'OpenSSH SSH Server' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 -Program "C:\Windows\System32\OpenSSH\sshd.exe"
 
 ### Ansible einrichten ⚙️
 
