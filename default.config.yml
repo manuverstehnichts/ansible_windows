@@ -66,12 +66,10 @@ choco_installed_packages:
   - steam
   - discord
   - bitwarden
-  - logitechgaming
+  - lghub
   - epicgameslauncher
   - overwolf
   - winscp
-  - onedrive
-  - wakeonlan
   - qbittorrent
   - greenshot
 
