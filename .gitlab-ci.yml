@@ -13,7 +13,7 @@ deploy_ansible:
     - mkdir -p ~/.ssh && chmod 700 ~/.ssh
     - eval $(ssh-agent -s)
     - echo "$ANSIBLE_SSH_KEY" | tr -d '\r' | ssh-add -
-    - ssh-keyscan -H 192.168.1.130 >> ~/.ssh/known_hosts
+    - ssh-keyscan -H 192.168.1.138 >> ~/.ssh/known_hosts
   script:
     - ansible-galaxy collection install -r requirements.yml
     - echo "$ANSIBLE_VAULT_PASSWORD" > .vault_pass
