@@ -1,2 +1,2 @@
 [win]
-192.168.1.130  ansible_connection=ssh ansible_shell_type=cmd
+192.168.1.138  ansible_connection=ssh ansible_shell_type=cmd
