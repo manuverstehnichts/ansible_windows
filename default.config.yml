@@ -58,10 +58,8 @@ choco_installed_packages:
     choco_args: --ignorechecksum
   - git
   - jre8
-  - peazip
   - powertoys
   - python3
-  - sharex
   - telegram
   - vlc
   - vscode
@@ -75,6 +73,7 @@ choco_installed_packages:
   - onedrive
   - wakeonlan
   - qbittorrent
+  - greenshot
 
 # --- Winget ---
 install_winget_packages: true
@@ -140,7 +139,7 @@ bloatware:
   - Microsoft.ZuneVideo
   - MicrosoftTeams
   # Optional deaktivierbare Apps:
-  # - Microsoft.YourPhone
+  - Microsoft.YourPhone
   # - microsoft.windowscommunicationsapps
   # - Microsoft.WindowsCalculator
   # - Microsoft.MSPaint
