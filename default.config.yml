@@ -68,7 +68,6 @@ choco_installed_packages:
   - bitwarden
   - lghub
   - epicgameslauncher
-  - overwolf
   - winscp
   - qbittorrent
   - greenshot
